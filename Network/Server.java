@@ -1,3 +1,7 @@
+package Network;
+
+import Utils.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +26,7 @@ public class Server {
            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
            output = new PrintWriter(socket.getOutputStream(), true);
         } catch (IOException exception) {
-            Logger.error("Error: Starting Server");
+            Logger.error("Error: Starting Network.Server");
         }
     }
 
@@ -30,7 +34,7 @@ public class Server {
         try {
             return input.readLine();
         } catch (IOException e) {
-            Logger.error("Error: Reading Client Message");
+            Logger.error("Error: Reading Network.Client Message");
         }
         return "";
     }
@@ -43,7 +47,7 @@ public class Server {
         try {
             socket.close();
         } catch (IOException ex) {
-            Logger.error("Error: Closing Server Socket");
+            Logger.error("Error: Closing Network.Server Socket");
         }
     }
 }

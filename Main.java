@@ -1,11 +1,15 @@
+import Network.Client;
+import Network.Server;
+import Utils.Logger;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to file server");
         System.out.println("Please choose the service you need:");
-        System.out.println("1. File Server");
-        System.out.println("2. Client");
+        System.out.println("1. File Network.Server");
+        System.out.println("2. Network.Client");
 
         var scanner = new Scanner(System.in);
         var response = scanner.nextInt();
@@ -14,7 +18,7 @@ public class Main {
                 System.out.print("Enter the server port: ");
                 var serverPort = scanner.nextInt();
                 var server = new Server(serverPort);
-                server.send("Connected to Server");
+                server.send("Connected to Network.Server");
                 System.out.println(server.receive());
                 server.close();
                 break;
