@@ -44,8 +44,7 @@ class ClientHandler implements Runnable {
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
-            content.append("END_OF_FILE");
-            return content.toString();
+            return content.substring(0, content.length()-2);
         } catch (IOException e) {
             e.printStackTrace();
             return "ERROR READING FILE";
