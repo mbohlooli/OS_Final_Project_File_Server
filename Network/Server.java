@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public abstract class Server {
     private final int port;
     private Socket socket;
     private BufferedReader input;
@@ -25,8 +25,9 @@ public class Server {
            socket = server.accept();
            input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
            output = new PrintWriter(socket.getOutputStream(), true);
+            System.out.println("Server started listening on port " + port);
         } catch (IOException exception) {
-            Logger.error("Error: Starting Network.Server");
+            Logger.error("Error: Starting Server");
         }
     }
 
@@ -34,7 +35,7 @@ public class Server {
         try {
             return input.readLine();
         } catch (IOException e) {
-            Logger.error("Error: Reading Network.Client Message");
+            Logger.error("Error: Reading Client Message");
         }
         return "";
     }
@@ -47,7 +48,7 @@ public class Server {
         try {
             socket.close();
         } catch (IOException ex) {
-            Logger.error("Error: Closing Network.Server Socket");
+            Logger.error("Error: Closing Server Socket");
         }
     }
 }
